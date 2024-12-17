@@ -1,0 +1,29 @@
+
+(00:00:00) python exercises & projects intro 🐍
+1. (00:00:26) simple arithmetic calculator 🧮 [VERY EASY]          [DONE]
+2. (00:06:18) weight conversion 🏋️ [VERY EASY]                     [DONE] 
+3. (00:10:18) temperature conversion 🌡️ [VERY EASY]                 [DONE]
+4. (00:14:16) email slicer program 📧 [EASY]                       [DONE]
+5. (00:18:02) compound interest calculator 💵 [EASY]               [DONE]
+6. (00:25:37) countdown timer ⌛ [EASY]                             [DONE]
+7. (00:31:32) shopping cart program 🛒 [EASY]
+8. (00:38:46) quiz game 💯 [INTERMEDIATE]
+9. (00:48:14) concession stand program 🍿 [EASY]
+10. (00:56:23) number guessing game 🔢 [EASY]
+11. (01:04:43) rock, paper, scissors game 🗿 [EASY]
+12. (01:14:12) dice roller program ⚂ [EASY/INTERMEDIATE]
+13. (01:24:17) encryption program 🔐 [EASY/INTERMEDIATE]
+14. (01:32:58) credit card validator 💳 [DIFFICULT]
+15. (01:41:51) banking program 💰 [EASY]
+16. (01:56:52) slot machine 🎰 [EASY]
+17. (02:17:03) hangman game 🕺 [INTERMEDIATE]
+18. (02:42:09) alarm clock ⏰ [EASY]
+19. (02:52:41) digital clock 🕒 [INTERMEDIATE]
+20. (03:09:06) stopwatch ⏱ [INTERMEDIATE]
+21. (03:27:04) weather app ☀️ [INTERMEDIATE]
+
+Currently At: 
+ -  Projects Done: 6
+ -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=2324s
+ -  Project Number: 7
+ -  Project: shopping cart program 🛒 [EASY]
