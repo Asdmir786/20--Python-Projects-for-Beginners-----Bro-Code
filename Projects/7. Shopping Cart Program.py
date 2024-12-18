@@ -32,6 +32,13 @@ while True:
             if continue_confirmation == "" or continue_confirmation == " ":
                 print("BLOODY y or n.")
             else: break
+            
+    if continue_confirmation == "n":
+        break
+    else:
+        continue
+
     
-    
-                
+print("\n<==========Shopping Cart==========>\n")
+for count, (item, price) in enumerate(items_and_prices.items(), start=1):
+    print(f"{count}. {item}: Rs.{price:.2f}")
