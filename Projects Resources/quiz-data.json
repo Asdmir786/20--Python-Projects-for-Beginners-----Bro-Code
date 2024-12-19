@@ -1,0 +1,23 @@
+{
+  "questions": [
+    "What is the capital of France?",
+    "What is 2 + 2?",
+    "What is the largest planet in our solar system?",
+    "Who wrote 'To Kill a Mockingbird'?",
+    "What is the boiling point of water?"
+  ],
+  "options": [
+    ["Paris", "London", "Berlin", "Madrid"],
+    ["3", "4", "5", "6"],
+    ["Earth", "Mars", "Jupiter", "Saturn"],
+    ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+    ["90°C", "100°C", "110°C", "120°C"]
+  ],
+  "answers": [
+    "Paris",
+    "4",
+    "Jupiter",
+    "Harper Lee",
+    "100°C"
+  ]
+}
