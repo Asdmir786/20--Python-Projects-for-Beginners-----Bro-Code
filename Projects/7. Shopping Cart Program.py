@@ -51,12 +51,12 @@ def get_userChoiceForMore():
         user_choice = input("Do you want to add more items to the cart? (y/n): ").strip()
         if user_choice.lower() != "y":
             display_cart()
-            time.sleep(2)
+            input("\nPress Enter to exit...")
             os.system("cls")
             return False
         else:
             display_cart()
-            time.sleep(2)
+            input("\nPress Enter to exit...")
             os.system("cls")
             return True
     
@@ -74,3 +74,6 @@ def main():
             break
         else:
             continue
+        
+if __name__ == "__main__":
+    main()
