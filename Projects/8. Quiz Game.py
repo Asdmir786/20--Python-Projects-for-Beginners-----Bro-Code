@@ -9,4 +9,26 @@ with open(input_filepath, "r",encoding="utf-8") as file:
 
 total_count = len(quiz_data)
 
-print(total_count)
+for i in range(1, total_count + 1):
+    quiz_key = f"quiz {i}"
+    quiz_answer_full = quiz_data[quiz_key]["answer"]
+    question = quiz_data[quiz_key]["question"]
+    print("<========================================>\n")
+    print(f"{i}. {question}")
+    for option in quiz_data[quiz_key]["options"]:
+        print(option)
+        
+    while True:
+        user_input = input("\nAnswer(A,B,C,D): ").upper().strip()
+    
+        if user_input == " "  or user_input == "" or len(user_input) > 1:
+            print("Invalid!")
+        else:
+            break
+        
+    user_input = f"{user_input}."
+
+    quiz_answer = quiz_answer_full.split()[0]
+
+    if user_input != quiz_answer:
+        print("Nope.")
