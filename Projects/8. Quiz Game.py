@@ -7,3 +7,6 @@ input_filepath = "C:\\Users\\asmir\\Documents\\20--Python-Projects-for-Beginners
 with open(input_filepath, "r",encoding="utf-8") as file:
     quiz_data = json.load(file)
 
+total_count = len(quiz_data)
+
+print(total_count)

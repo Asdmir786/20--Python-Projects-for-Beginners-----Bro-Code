@@ -1,34 +1,27 @@
 {
-  "quiz": [
-    {
-      "number": 1,
-      "question": "What is the capital of France?",
-      "options": ["A. Paris", "B. London", "C. Berlin", "D. Madrid"],
-      "answer": "A. Paris"
-    },
-    {
-      "number": 2,
-      "question": "How many continents are there?",
-      "options": ["A. 3", "B. 4", "C. 5", "D. 6"],
-      "answer": "B. 4"
-    },
-    {
-      "number": 3,
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["A. Earth", "B. Mars", "C. Jupiter", "D. Saturn"],
-      "answer": "C. Jupiter"
-    },
-    {
-      "number": 4,
-      "question": "Who wrote 'To Kill a Mockingbird'?",
-      "options": ["A. Harper Lee", "B. Mark Twain", "C. Ernest Hemingway", "D. F. Scott Fitzgerald"],
-      "answer": "A. Harper Lee"
-    },
-    {
-      "number": 5,
-      "question": "What is the boiling point of water?",
-      "options": ["A. 90°C", "B. 100°C", "C. 110°C", "D. 120°C"],
-      "answer": "B. 100°C"
-    }
-  ]
+  "quiz 1": {
+    "question": "What is the capital of France?",
+    "options": ["A. Paris", "B. London", "C. Berlin", "D. Madrid"],
+    "answer": "A. Paris"
+  },
+  "quiz 2": {
+    "question": "How many continents are there?",
+    "options": ["A. 3", "B. 4", "C. 5", "D. 6"],
+    "answer": "B. 4"
+  },
+  "quiz 3": {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["A. Earth", "B. Mars", "C. Jupiter", "D. Saturn"],
+    "answer": "C. Jupiter"
+  },
+  "quiz 4": {
+    "question": "Who wrote 'To Kill a Mockingbird'?",
+    "options": ["A. Harper Lee", "B. Mark Twain", "C. Ernest Hemingway", "D. F. Scott Fitzgerald"],
+    "answer": "A. Harper Lee"
+  },
+  "quiz 5": {
+    "question": "What is the boiling point of water?",
+    "options": ["A. 90°C", "B. 100°C", "C. 110°C", "D. 120°C"],
+    "answer": "B. 100°C"
+  }
 }
