@@ -8,11 +8,15 @@ with open(input_filepath, "r",encoding="utf-8") as file:
     quiz_data = json.load(file)
 
 total_count = len(quiz_data)
+quiz_answer = []
+user_answer = []
 
 for i in range(1, total_count + 1):
     quiz_key = f"quiz {i}"
     quiz_answer_full = quiz_data[quiz_key]["answer"]
     question = quiz_data[quiz_key]["question"]
+    
+    
     print("<========================================>\n")
     print(f"{i}. {question}")
     for option in quiz_data[quiz_key]["options"]:
@@ -26,9 +30,9 @@ for i in range(1, total_count + 1):
         else:
             break
         
-    user_input = f"{user_input}."
+    quiz_answer.append(quiz_answer_full.split()[0][0])
+    user_answer.append(user_input)
 
-    quiz_answer = quiz_answer_full.split()[0]
 
-    if user_input != quiz_answer:
-        print("Nope.")
+print(quiz_answer)
+print(user_answer)
