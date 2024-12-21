@@ -10,6 +10,8 @@ with open(input_filepath, "r",encoding="utf-8") as file:
 total_count = len(quiz_data)
 quiz_answer = []
 user_answer = []
+user_score = 0
+total_score = f"{user_score}/{len(quiz_answer)}"
 
 for i in range(1, total_count + 1):
     quiz_key = f"quiz {i}"
@@ -34,5 +36,10 @@ for i in range(1, total_count + 1):
     user_answer.append(user_input)
 
 
-print(quiz_answer)
-print(user_answer)
+for i in range(0, len(quiz_answer)):
+    if user_answer[i] == quiz_answer[i]:
+        user_score += 1
+    else:
+        pass
+
+print(f"Total Score: {total_score}")
