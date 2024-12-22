@@ -7,15 +7,15 @@ input_filepath = "C:\\Users\\asmir\\Documents\\20--Python-Projects-for-Beginners
 with open(input_filepath, "r", encoding="utf-8") as file:
     quiz_data = json.load(file)
 
-correct_questions = []
-wrong_questions = []
+correct_answers = []  # Renamed from correct_questions
+incorrect_answers = []  # Renamed from wrong_questions
 
-def QuizQnALogic():
-    total_count = len(quiz_data)
-    user_score = 0
-    for i in range(1, total_count + 1):
+def quiz_logic():  # Renamed from QuizQnALogic
+    total_questions = len(quiz_data)  # Renamed from total_count
+    score = 0  # Renamed from user_score
+    for i in range(1, total_questions + 1):
         quiz_key = f"quiz {i}"
-        quiz_answer_full = quiz_data[quiz_key]["answer"]
+        correct_answer_full = quiz_data[quiz_key]["answer"]  # Renamed from quiz_answer_full
         question = quiz_data[quiz_key]["question"]
         
         print("<========================================>\n")
@@ -31,47 +31,47 @@ def QuizQnALogic():
             else:
                 break
             
-        quiz_answer = quiz_answer_full.split()[0][0]
+        correct_answer = correct_answer_full.split()[0][0]  # Renamed from quiz_answer
         
-        if user_input == quiz_answer:
-            user_score += 1
-            correct_questions.append(f"{i}. {question}")
+        if user_input == correct_answer:
+            score += 1
+            correct_answers.append(f"{i}. {question}")
         else:
-            wrong_questions.append(f"{i}. {question}")
+            incorrect_answers.append(f"{i}. {question}")
 
-    return user_score, total_count  # Fixed return values
+    return score, total_questions  # Renamed return values
 
-def result(user_score, total_count):  # Fixed function parameters
-    percentage = (user_score / total_count) * 100  # Fixed percentage calculation
+def display_result(score, total_questions):  # Renamed from result
+    percentage = (score / total_questions) * 100  # Fixed percentage calculation
 
     if percentage == 100:
-        print(f"Total Score: {user_score}/{total_count}\nGudh.")
+        print(f"Total Score: {score}/{total_questions}\nGudh.")
     elif percentage >= 90:
-        print(f"Total Score: {user_score}/{total_count}\nFr Fr.")
+        print(f"Total Score: {score}/{total_questions}\nFr Fr.")
     elif percentage >= 80:
-        print(f"Total Score: {user_score}/{total_count}\nChale Ga.")
+        print(f"Total Score: {score}/{total_questions}\nChale Ga.")
     elif percentage >= 70:
-        print(f"Total Score: {user_score}/{total_count}\nAchi koshish krna.")
+        print(f"Total Score: {score}/{total_questions}\nAchi koshish krna.")
     elif percentage >= 60:
-        print(f"Total Score: {user_score}/{total_count}\nkela kha.")
+        print(f"Total Score: {score}/{total_questions}\nkela kha.")
     elif percentage >= 50:
-        print(f"Total Score: {user_score}/{total_count}\nBhaiya G ye 50 50 nhi chale ga.")
+        print(f"Total Score: {score}/{total_questions}\nBhaiya G ye 50 50 nhi chale ga.")
     elif percentage >= 40:
-        print(f"Total Score: {user_score}/{total_count}\nBeta tu maut ka khel khel rha hai.")
+        print(f"Total Score: {score}/{total_questions}\nBeta tu maut ka khel khel rha hai.")
     elif percentage >= 30:
-        print(f"Total Score: {user_score}/{total_count}\nTere L lag gye.")
+        print(f"Total Score: {score}/{total_questions}\nTere L lag gye.")
     elif percentage >= 20:
-        print(f"Total Score: {user_score}/{total_count}\nSai raste me hai or sigma ban.")
+        print(f"Total Score: {score}/{total_questions}\nSai raste me hai or sigma ban.")
     elif percentage >= 10:
-        print(f"Total Score: {user_score}/{total_count}\nNikal kele.")
+        print(f"Total Score: {score}/{total_questions}\nNikal kele.")
     else:  # Covers percentage < 10, including 0
-        print(f"Total Score: {user_score}/{total_count}\nBeta tughe kia hi bataun tu putr chuti kar.")
+        print(f"Total Score: {score}/{total_questions}\nBeta tughe kia hi bataun tu putr chuti kar.")
     
     if percentage < 100:
-        print(f"{wrong_questions}\nYou got these ones wrong.")
+        print(f"{incorrect_answers}\nYou got these ones wrong.")
 
 def main():
-    user_score, total_count = QuizQnALogic()  # Fixed function call
-    result(user_score, total_count)  # Fixed function call
+    score, total_questions = quiz_logic()  # Renamed function call
+    display_result(score, total_questions)  # Renamed function call
 
 main()
