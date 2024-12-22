@@ -6,13 +6,13 @@
   },
   "quiz 2": {
     "question": "How many continents are there?",
-    "options": ["A. 3", "B. 4", "C. 5", "D. 6"],
-    "answer": "B. 4"
+    "options": ["A. 3", "B. 4", "C. 5", "D. 7"],
+    "answer": "D. 7"
   },
   "quiz 3": {
     "question": "Which planet is known as the Red Planet?",
     "options": ["A. Earth", "B. Mars", "C. Jupiter", "D. Saturn"],
-    "answer": "C. Jupiter"
+    "answer": "B. Mars"
   },
   "quiz 4": {
     "question": "Who wrote 'To Kill a Mockingbird'?",
@@ -23,5 +23,80 @@
     "question": "What is the boiling point of water?",
     "options": ["A. 90°C", "B. 100°C", "C. 110°C", "D. 120°C"],
     "answer": "B. 100°C"
+  },
+  "quiz 6": {
+    "question": "What is the largest ocean on Earth?",
+    "options": ["A. Atlantic Ocean", "B. Indian Ocean", "C. Arctic Ocean", "D. Pacific Ocean"],
+    "answer": "D. Pacific Ocean"
+  },
+  "quiz 7": {
+    "question": "Who painted the Mona Lisa?",
+    "options": ["A. Vincent van Gogh", "B. Pablo Picasso", "C. Leonardo da Vinci", "D. Claude Monet"],
+    "answer": "C. Leonardo da Vinci"
+  },
+  "quiz 8": {
+    "question": "What is the smallest country in the world?",
+    "options": ["A. Monaco", "B. Vatican City", "C. San Marino", "D. Liechtenstein"],
+    "answer": "B. Vatican City"
+  },
+  "quiz 9": {
+    "question": "What is the chemical symbol for gold?",
+    "options": ["A. Au", "B. Ag", "C. Pb", "D. Fe"],
+    "answer": "A. Au"
+  },
+  "quiz 10": {
+    "question": "Who developed the theory of relativity?",
+    "options": ["A. Isaac Newton", "B. Galileo Galilei", "C. Albert Einstein", "D. Nikola Tesla"],
+    "answer": "C. Albert Einstein"
+  },
+  "quiz 11": {
+    "question": "What is the hardest natural substance on Earth?",
+    "options": ["A. Gold", "B. Iron", "C. Diamond", "D. Platinum"],
+    "answer": "C. Diamond"
+  },
+  "quiz 12": {
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "options": ["A. China", "B. Japan", "C. South Korea", "D. Thailand"],
+    "answer": "B. Japan"
+  },
+  "quiz 13": {
+    "question": "What is the longest river in the world?",
+    "options": ["A. Amazon River", "B. Nile River", "C. Yangtze River", "D. Mississippi River"],
+    "answer": "B. Nile River"
+  },
+  "quiz 14": {
+    "question": "Who is the author of the Harry Potter series?",
+    "options": ["A. J.R.R. Tolkien", "B. J.K. Rowling", "C. George R.R. Martin", "D. C.S. Lewis"],
+    "answer": "B. J.K. Rowling"
+  },
+  "quiz 15": {
+    "question": "What is the capital of Australia?",
+    "options": ["A. Sydney", "B. Melbourne", "C. Canberra", "D. Brisbane"],
+    "answer": "C. Canberra"
+  },
+  "quiz 16": {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["A. Earth", "B. Mars", "C. Jupiter", "D. Saturn"],
+    "answer": "C. Jupiter"
+  },
+  "quiz 17": {
+    "question": "Who was the first President of the United States?",
+    "options": ["A. Abraham Lincoln", "B. George Washington", "C. Thomas Jefferson", "D. John Adams"],
+    "answer": "B. George Washington"
+  },
+  "quiz 18": {
+    "question": "What is the main ingredient in guacamole?",
+    "options": ["A. Tomato", "B. Onion", "C. Avocado", "D. Lime"],
+    "answer": "C. Avocado"
+  },
+  "quiz 19": {
+    "question": "What is the tallest mountain in the world?",
+    "options": ["A. K2", "B. Kangchenjunga", "C. Lhotse", "D. Mount Everest"],
+    "answer": "D. Mount Everest"
+  },
+  "quiz 20": {
+    "question": "What is the currency of Japan?",
+    "options": ["A. Yen", "B. Won", "C. Yuan", "D. Ringgit"],
+    "answer": "A. Yen"
   }
 }
