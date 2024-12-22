@@ -40,21 +40,47 @@ def QuizQnA():
         user_answer.append(user_input)
 
         if user_answer == quiz_answer:
+            user_score += 1
             correct_questions.append(f"{i}. {question}")
         else:
             wrong_questions.append(f"{i}. {question}")
             pass        
 
-QuizQnA()
-print(f"Correct Questions: {correct_questions},\nWrong Questions: {wrong_questions}")
+    return user_score
 
-# for i in range(0, len(quiz_answer)):
-#     if user_answer[i] == quiz_answer[i]:
-#         user_score += 1
-#     else:
-#         wrong_questions.append(user_answer[i])
-#         pass
+user_score = QuizQnA()
 
-# total_score = f"{user_score}/{len(quiz_answer)}"
+total_score = f"{user_score}/{len(quiz_answer)}"
 
-# print(f"Total Score: {total_score}")
+if (user_score/len(quiz_answer))*100 == 100:
+    print(f"Total Score: {user_score}/{quiz_answer}\nGudh.")
+elif (user_score/len(quiz_answer))*100 == 90:
+    print(f"Total Score: {user_score}/{quiz_answer}\nFr Fr.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 80:
+    print(f"Total Score: {user_score}/{quiz_answer}\nChale Ga.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 70:
+    print(f"Total Score: {user_score}/{quiz_answer}\nAchi koshish krna.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 60:
+    print(f"Total Score: {user_score}/{quiz_answer}\nkela kha.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 50:
+    print(f"Total Score: {user_score}/{quiz_answer}\nBhaiya G ye 50 50 nhi chale ga.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 40:
+    print(f"Total Score: {user_score}/{quiz_answer}\nBeta tu maut ka khel khel rha hai.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 30:
+    print(f"Total Score: {user_score}/{quiz_answer}\nTere L lag gye.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 20:
+    print(f"Total Score: {user_score}/{quiz_answer}\nSai raste me hai or sigma ban.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 >= 10:
+    print(f"Total Score: {user_score}/{quiz_answer}\nNikal kele.")
+    print(f"{wrong_questions}\n You got these one wrong.")
+elif (user_score/len(quiz_answer))*100 == 0:
+    print("Beta tughe kia hi bataun tu putr chuti kar.")
+    
