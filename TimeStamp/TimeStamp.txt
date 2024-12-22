@@ -6,7 +6,7 @@
 5. (00:18:02) compound interest calculator 💵 [EASY]               [DONE]
 6. (00:25:37) countdown timer ⌛ [EASY]                             [DONE]
 7. (00:31:32) shopping cart program 🛒 [EASY]                      [DONE]
-8. (00:38:46) quiz game 💯 [INTERMEDIATE]
+8. (00:38:46) quiz game 💯 [INTERMEDIATE]                          [DONE]
 9. (00:48:14) concession stand program 🍿 [EASY]
 10. (00:56:23) number guessing game 🔢 [EASY]
 11. (01:04:43) rock, paper, scissors game 🗿 [EASY]
@@ -22,7 +22,7 @@
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
- -  Projects Done: 7
- -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=2893s
- -  Project Number: 8
- -  Project: quiz game 💯 [INTERMEDIATE]
+ -  Projects Done: 8
+ -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=3381s
+ -  Project Number: 9
+ -  Project: concession stand program 🍿 [EASY]
