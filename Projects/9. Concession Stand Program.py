@@ -44,7 +44,7 @@ def ask_user_input(concession_menu_lower=dict):
             print("Try Again!")
         else:
             # print("[DEBUG]: Gudh") # Debug
-            break
+            return user_input
 
 def add_items_and_calculate_total():
     pass
