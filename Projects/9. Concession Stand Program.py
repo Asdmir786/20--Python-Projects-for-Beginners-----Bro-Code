@@ -27,3 +27,7 @@ concession_menu = {
     "Trail Mix": 290.00
 }
 
+print("≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ Menu ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈")
+
+for food,price in concession_menu.items():
+    print(f"{food} {'-' * (40 - len(food) - 1)} Rs.{price}")
