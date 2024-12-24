@@ -34,21 +34,27 @@ def display_menu(concession_menu=dict):
     
     print("≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ Menu ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈")
     # Display the menu
-    for i,(food,price) in enumerate(concession_menu.items()):
+    for i, (food, price) in enumerate(concession_menu.items()):
         print(f"{i}. {food} {'-' * (40 - len(food) - len(str(i)))} Rs.{price}")
 
 def ask_user_input(concession_menu_lower=dict):
     user_items = []
     while True:
-        user_input = input("Which food item would you like to order?\n: ")
-        if user_input not in concession_menu_lower.keys():
+        user_input = input("Which food item would you like to order?(q to quit)\n: ").lower()
+        if user_input not in concession_menu_lower.keys() and user_input not in ["q","quit"]:
             print("Try Again!")
         elif user_input in concession_menu_lower.keys():
+            print(f"{user_input} has been added to the list.")
             user_items.append(user_input)
-        elif user_input not in ["q","quit"]:
+        elif user_input in ["q","quit"]:
             return user_items
 
-def add_items_and_calculate_total(user_item=list,menu=dict):
-    pass
+def add_items_and_calculate_total(user_items=list,menu=dict):
+    total_price = 0
+    for i in user_items:
+        total_price += menu[i]
+    print(f"Total price: Rs.{total_price:.2f}")
 
-ask_user_input(concession_menu)
+display_menu(concession_menu)
+user_items = ask_user_input(concession_menu_lower)
+add_items_and_calculate_total(user_items,concession_menu_lower)
