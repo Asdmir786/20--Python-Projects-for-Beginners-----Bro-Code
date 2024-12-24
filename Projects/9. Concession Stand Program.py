@@ -38,15 +38,17 @@ def display_menu(concession_menu=dict):
         print(f"{i}. {food} {'-' * (40 - len(food) - len(str(i)))} Rs.{price}")
 
 def ask_user_input(concession_menu_lower=dict):
+    user_items = []
     while True:
         user_input = input("Which food item would you like to order?\n: ")
-        if user_input not in concession_menu_lower.keys() and user_input not in ["q","quit"]:
+        if user_input not in concession_menu_lower.keys():
             print("Try Again!")
-        else:
-            # print("[DEBUG]: Gudh") # Debug
-            return user_input
+        elif user_input in concession_menu_lower.keys():
+            user_items.append(user_input)
+        elif user_input not in ["q","quit"]:
+            return user_items
 
-def add_items_and_calculate_total():
+def add_items_and_calculate_total(user_item=list,menu=dict):
     pass
 
 ask_user_input(concession_menu)
