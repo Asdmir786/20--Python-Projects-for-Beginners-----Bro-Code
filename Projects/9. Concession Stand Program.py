@@ -44,7 +44,7 @@ def ask_user_input(concession_menu_lower=dict):
         if user_input not in concession_menu_lower.keys() and user_input not in ["q","quit"]:
             print("Try Again!")
         elif user_input in concession_menu_lower.keys():
-            print(f"{user_input} has been added to the list.")
+            print(f"{user_input.upper()} has been added to the list.")
             user_items.append(user_input)
         elif user_input in ["q","quit"]:
             return user_items
@@ -55,6 +55,10 @@ def add_items_and_calculate_total(user_items=list,menu=dict):
         total_price += menu[i]
     print(f"Total price: Rs.{total_price:.2f}")
 
-display_menu(concession_menu)
-user_items = ask_user_input(concession_menu_lower)
-add_items_and_calculate_total(user_items,concession_menu_lower)
+def main(concession_menu,concession_menu_lower):
+    display_menu(concession_menu)
+    user_items = ask_user_input(concession_menu_lower)
+    add_items_and_calculate_total(user_items,concession_menu_lower)
+
+if __name__ == "__main__":
+    main(concession_menu,concession_menu_lower)
