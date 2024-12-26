@@ -7,7 +7,7 @@
 6. (00:25:37) countdown timer ⌛ [EASY]                             [DONE]
 7. (00:31:32) shopping cart program 🛒 [EASY]                      [DONE]
 8. (00:38:46) quiz game 💯 [INTERMEDIATE]                          [DONE]
-9. (00:48:14) concession stand program 🍿 [EASY]
+9. (00:48:14) concession stand program 🍿 [EASY]                    [DONE]
 10. (00:56:23) number guessing game 🔢 [EASY]
 11. (01:04:43) rock, paper, scissors game 🗿 [EASY]
 12. (01:14:12) dice roller program ⚂ [EASY/INTERMEDIATE]
@@ -22,7 +22,6 @@
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
- -  Projects Done: 9
- -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=3381s
  -  Project Number: 10
- -  Project: 
+ -  Project: number guessing game 🔢 [EASY]
+ -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=3883s
