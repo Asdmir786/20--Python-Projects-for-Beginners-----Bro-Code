@@ -15,7 +15,7 @@ def ask_user_input():
             if lowest_number <= user_input >= highest_number:
                 return user_input
             else:
-                print(f"Enter a number less than {highest_number} or graeter than {lowest_number}. ")
+                print(f"Enter a number less than {highest_number} or greater than {lowest_number}. ")
         except ValueError:
             print("Enter a number.")
             
