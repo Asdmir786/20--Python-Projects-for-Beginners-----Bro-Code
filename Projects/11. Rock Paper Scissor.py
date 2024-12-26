@@ -31,8 +31,8 @@ def cheen_tapak_dam_dam(user_choice,computer_choice):
         return "draw"
     # computer wins
     elif (user_choice == "rock" and computer_choice == "paper")\
-         or (user_choice == "paper" and computer_choice == "rock")\
-         or (user_choice == "scissor" and computer_choice == "paper"):
+         or (user_choice == "paper" and computer_choice == "scissors")\
+         or (user_choice == "scissors" and computer_choice == "rock"):
         computer_wins()
         return "computer_wins"
     # user wins
@@ -50,7 +50,7 @@ def continue_or_not():
             break
         elif user_choice == "n":
             print("Bye bye.")
-            input()
+            input("Press Enter to exit the program...")
             exit()
             
 
