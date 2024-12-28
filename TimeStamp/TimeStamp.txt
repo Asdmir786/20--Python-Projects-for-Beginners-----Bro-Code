@@ -23,5 +23,5 @@
 
 Currently At: 
  -  Project Number: 12
- -  Project: rock, paper, scissors game 🗿 [EASY]
- -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=4450s
+ -  Project: dice roller program ⚂ [EASY/INTERMEDIATE]
+ -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=5055s
