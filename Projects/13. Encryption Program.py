@@ -18,7 +18,7 @@ def ask_user_for_encryption():
 Here's the list of encryption: 
 1. Caesar Cipher 
 2. Substitution Cipher
-(1,2)
+Enter the encryption number(1,2): 
 ''').strip()
         if user_input not in ["1","2"]:
             print("Invalid Number, Enter the number please.")
@@ -38,4 +38,9 @@ def ask_user_for_text(user_input):
             return user_string
 
 def Caesar_Cypher(user_string):
-    pass
+    user_string = list(user_string)
+    print(user_string)
+
+user_string = "Hamood Wal hamoodi"
+
+Caesar_Cypher(user_string)
