@@ -39,8 +39,10 @@ def ask_user_for_text(user_input):
 
 def Caesar_Cypher(user_string):
     user_string = list(user_string)
-    print(user_string)
-
+    # print(user_string)
+    for i in range(len(user_string)):
+        if user_string[i] in letters:
+            pass
 user_string = "Hamood Wal hamoodi"
 
 Caesar_Cypher(user_string)
