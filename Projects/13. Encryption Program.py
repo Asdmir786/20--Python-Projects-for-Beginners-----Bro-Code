@@ -6,7 +6,7 @@ letters = [
 ]
 
 ignore_letters = [
-    " ", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")" , "[]", "{}",":",
+    " ", "!", "@", "#", "$", "%", "^", "&", "*", "()", "[]", "{}",":",
     ";", "'", "\"", " |", "\\", ",", "<>", "/", "?", "_", "-", "=","+"
     ]
 
@@ -42,16 +42,46 @@ def ask_user_for_text(user_input):
         else:
             return user_string
 
-def Caesar_Cypher(user_string):
+def Caesar_Cypher_Encrypt(user_string):
     match_index = []
     user_string = list(user_string)
+    encrypted_string = []
     # print(user_string)
     for I in user_string:
         if I in ignore_letters:
+            match_index.append(I)
             continue
         match_index.append(letters.index(I))
-    print(match_index)
+    
+    print(f"match index: {match_index}")
+    for I in match_index:
+        if I in ignore_letters:
+            encrypted_string.append(I)
+            continue
+        encrypted_string.append(caesar_letters_5[I])
+    print(f" Encrypted Index: {encrypted_string}")
 
+def Caesar_Cypher_Decrypt(encrypted_string):
+    match_index = []
+    encrypted_string = list(encrypted_string)
+    decrypted_string = []
+
+    for I in encrypted_string:
+        if I in ignore_letters:
+            match_index.append(I)
+            continue
+        match_index.append(caesar_letters_5.index(I))
+    print(f"match index: {match_index}")
+    
+    for I in match_index:
+        if I in ignore_letters:
+            decrypted_string.append(I)
+            continue
+        decrypted_string.append(letters[I])
+    print(f" Decrypted Index: {encrypted_string}")
+    
+    
+    
 user_string = "Hamood Wal hamoodi"
 
-Caesar_Cypher(user_string)
+Caesar_Cypher_Decrypt(user_string)
