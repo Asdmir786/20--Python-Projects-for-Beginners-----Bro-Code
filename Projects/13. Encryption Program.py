@@ -1,9 +1,17 @@
+import random
+
 # Original letters and numbers
 letters = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 ]
+
+# Create a copy of the original list
+letters_shuffled = letters[:]
+
+# Shuffle the copy in place
+random.shuffle(letters_shuffled)
 
 ignore_letters = [
     " ", "!", "@", "#", "$", "%", "^", "&", "*", "()", "[]", "{}",":",
@@ -22,7 +30,7 @@ def ask_user_for_encryption():
         user_input = input('''
 Here's the list of encryption: 
 1. Caesar Cipher 
-2. Substitution Cipher
+2. Extended Monoalphabetic Substitution Cipher
 Enter the encryption number(1,2): 
 ''').strip()
         if user_input not in ["1","2"]:
@@ -59,7 +67,9 @@ def Caesar_Cypher_Encrypt(user_string):
             encrypted_string.append(I)
             continue
         encrypted_string.append(caesar_letters_5[I])
-    print(f" Encrypted Index: {encrypted_string}")
+    result = ''.join(encrypted_string)
+    print(f" Encrypted String: {result}")
+    return result
 
 def Caesar_Cypher_Decrypt(encrypted_string):
     match_index = []
@@ -78,10 +88,55 @@ def Caesar_Cypher_Decrypt(encrypted_string):
             decrypted_string.append(I)
             continue
         decrypted_string.append(letters[I])
-    print(f" Decrypted Index: {encrypted_string}")
+    result = ''.join(decrypted_string)
+    print(f" Decrypted String: {result}")
+    return result
     
+def Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_input):
+    user_input = list(user_input)
+    matching_index = []
+    encrypted_string = []
+
+    for i in user_input:
+        if i in ignore_letters:
+            matching_index.append(i)
+            continue
+        matching_index.append(letters.index(i))
+    print(f"WHatever this is: {matching_index}")
+    print(f"type: {type(matching_index)}")
     
+    for i in matching_index:
+        if i in ignore_letters:
+            encrypted_string.append(i)
+            continue
+        encrypted_string.append(letters_shuffled[i])
+    return encrypted_string
+
+def Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string):
+    encrypted_string = list(encrypted_string)
+    matching_index = []
+    decrypted_string = []
+
+    for i in encrypted_string:
+        if i in ignore_letters:
+            matching_index.append(i)
+            continue
+        matching_index.append(letters_shuffled.index(i))
+    print(f"WHatever this is: {matching_index}")
+    print(f"type: {type(matching_index)}")
+    
+    for i in matching_index:
+        if i in ignore_letters:
+            decrypted_string.append(i)
+            continue
+        decrypted_string.append(letters[i])
+    return decrypted_string
     
 user_string = "Hamood Wal hamoodi"
 
-Caesar_Cypher_Decrypt(user_string)
+encrypted_string = Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_string)
+decrypted_string = Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string)
+print(encrypted_string)
+print(decrypted_string)
+# encrypted_message = Caesar_Cypher_Encrypt(user_string)
+# decrypted_message = Caesar_Cypher_Decrypt(encrypted_message)
