@@ -1,4 +1,6 @@
 import random
+import time
+import os
 
 # Original letters and numbers
 letters = [
@@ -36,7 +38,7 @@ Enter the encryption number(1,2):
         if user_input not in ["1","2"]:
             print("Invalid Number, Enter the number please.")
         else:
-            return user_input
+            return int(user_input)
 
 def ask_user_for_text(user_input):
     while True:
@@ -132,11 +134,13 @@ def Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string):
         decrypted_string.append(letters[i])
     return decrypted_string
     
-user_string = "Hamood Wal hamoodi"
-
-encrypted_string = Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_string)
-decrypted_string = Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string)
-print(encrypted_string)
-print(decrypted_string)
-# encrypted_message = Caesar_Cypher_Encrypt(user_string)
-# decrypted_message = Caesar_Cypher_Decrypt(encrypted_message)
+def main():
+    while True:
+        user_string = input("Enter your text: ")
+        if user_string == "":
+            print("Invalawde.")
+        else:
+            break
+    encryption_method = ask_user_for_encryption()
+    if encryption_method == 1:
+        pass
