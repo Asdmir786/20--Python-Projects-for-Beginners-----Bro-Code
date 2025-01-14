@@ -33,22 +33,22 @@ def ask_user_for_encryption():
 Here's the list of encryption: 
 1. Caesar Cipher 
 2. Extended Monoalphabetic Substitution Cipher
-Enter the encryption number(1,2): 
-''').strip()
+Enter the encryption number(1,2): ''').strip()
         if user_input not in ["1","2"]:
             print("Invalid Number, Enter the number please.")
+            time.sleep(1.5)
+            os.system("cls")
         else:
             return int(user_input)
 
-def ask_user_for_text(user_input):
+def ask_user_for_text():
     while True:
-        if user_input == "1":
-            user_string = input("Enter Your Text Innit: ").strip().lower()
-        elif user_input == "2":
-            user_string = input("Enter you text you bloody: ").strip().lower()
+        user_string = input("Enter you Text: ")
 
-        if user_string == " ":
+        if user_string == "":
             print("Enter something innit? ")
+            time.sleep(1.5)
+            os.system("cls")
         else:
             return user_string
 
@@ -93,7 +93,39 @@ def Caesar_Cypher_Decrypt(encrypted_string):
     result = ''.join(decrypted_string)
     print(f" Decrypted String: {result}")
     return result
+  
+def Caesar_Cypher():
+    while True:
+        eod = input("Do you want to Encrypt or Decrypt(E/D): ").upper().strip()
+        if eod not in ["E","D"]:
+            print("Enter E or D.")
+            time.sleep(0.3)
+            os.system("cls")
+        else: break
+        
+    if eod == "E":
+        user_text = ask_user_for_text()
+        Caesar_Cypher_Encrypt(user_text)
+    else: 
+        user_text = ask_user_for_text()
+        Caesar_Cypher_Decrypt(user_text)
     
+def Extended_Monoalphabetic_Substitution_Cipher():
+    while True:
+        eod = input("Do you want to Encrypt or Decrypt(E/D): ").upper().strip()
+        if eod not in ["E","D"]:
+            print("Enter E or D.")
+            time.sleep(0.3)
+            os.system("cls")
+        else: break
+    
+    if eod == "E":
+        user_text = ask_user_for_text()
+        Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_text)
+    else: 
+        user_text = ask_user_for_text()
+        Extended_Monoalphabetic_Substitution_Cipher_Decrypt(user_text)
+
 def Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_input):
     user_input = list(user_input)
     matching_index = []
@@ -112,6 +144,8 @@ def Extended_Monoalphabetic_Substitution_Cipher_Encrypt(user_input):
             encrypted_string.append(i)
             continue
         encrypted_string.append(letters_shuffled[i])
+    result = ''.join(encrypted_string)
+    print(f" Decrypted String: {result}")
     return encrypted_string
 
 def Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string):
@@ -132,15 +166,31 @@ def Extended_Monoalphabetic_Substitution_Cipher_Decrypt(encrypted_string):
             decrypted_string.append(i)
             continue
         decrypted_string.append(letters[i])
+    result = ''.join(decrypted_string)
+    print(f" Decrypted String: {result}")
     return decrypted_string
     
 def main():
-    while True:
-        user_string = input("Enter your text: ")
-        if user_string == "":
-            print("Invalawde.")
-        else:
-            break
     encryption_method = ask_user_for_encryption()
-    if encryption_method == 1:
-        pass
+    
+    while True:
+        if encryption_method == 1:
+            Caesar_Cypher()
+        else:
+            Extended_Monoalphabetic_Substitution_Cipher()
+        
+        user_choice = input("Do you want to continue or not?(y/n): ").lower().strip()
+        if user_choice == 'y':
+            continue
+        elif user_choice == 'n':
+            print("Bye Bye.")
+            time.sleep(2)
+            os.system("cls")
+            exit()
+        else:
+            print("Enter y or n?")
+            time.sleep(0.5)
+            os.system("cls")
+        
+if __name__ == "__main__":
+    main()
