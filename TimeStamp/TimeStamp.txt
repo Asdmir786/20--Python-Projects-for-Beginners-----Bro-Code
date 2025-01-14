@@ -11,7 +11,7 @@
 10. (00:56:23) number guessing game 🔢 [EASY]                      [DONE]
 11. (01:04:43) rock, paper, scissors game 🗿 [EASY]                 [DONE]
 12. (01:14:12) dice roller program ⚂ [EASY/INTERMEDIATE]           [DONE]
-13. (01:24:17) encryption program 🔐 [EASY/INTERMEDIATE]
+13. (01:24:17) encryption program 🔐 [EASY/INTERMEDIATE]           [DONE]
 14. (01:32:58) credit card validator 💳 [DIFFICULT]
 15. (01:41:51) banking program 💰 [EASY]
 16. (01:56:52) slot machine 🎰 [EASY]
@@ -22,6 +22,6 @@
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
- -  Project Number: 13
- -  Project: encryption program 🔐 [EASY/INTERMEDIATE]
+ -  Project Number: 14
+ -  Project: credit card validator 💳 [DIFFICULT]
  -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=5578s
