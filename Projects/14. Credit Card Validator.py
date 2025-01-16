@@ -7,7 +7,7 @@ def frfr(time_in_seconds_for_sleep):
     
 def get_credit_card_number():
     while True:
-        cc_number = input("Enter your credit card number (you can use spaces, dashes, or just enter it continuously): ").strip()
+        cc_number = input("Enter your credit card number (default=(\" \",\"-\")): ").strip()
         if cc_number == "" or cc_number == " ":
             print("Enter a credit card number not nothing.")
             frfr(0.5)
