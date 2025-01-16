@@ -7,7 +7,7 @@ def frfr(time_in_seconds_for_sleep):
     
 def get_credit_card_number():
     while True:
-        cc_number = input("Enter your credit card number (default=(\" \",\"-\")): ").strip()
+        cc_number = input("Enter your credit card number (only enter space or - for seperators): ").strip()
         if cc_number == "" or cc_number == " ":
             print("Enter a credit card number not nothing.")
             frfr(0.5)
@@ -20,42 +20,39 @@ def clean_credit_card(credit_card_number="",dividers=set()):
         credit_card_number = credit_card_number.replace(divider,"")
 
     print(credit_card_number)
+    return credit_card_number
 
-def Luhns_Algorithm(credit_card_number):
-    """
-    Algorithm Steps:
-    1. Starting from the rightmost digit (excluding check digit), move left.
-    2. Double every second digit.
-    3. If doubling results in a number > 9, add its digits together (e.g., 16 -> 1+6 = 7).
-    4. Add up all digits (including untouched ones).
-    5. If total is divisible by 10, number is valid.
+def Luhns_Algorithm(credit_card_number=""):
+    credit_card_number = list(map(int,credit_card_number))
     
-    Args:
-        number (str): The number to validate as a string.
-                     Example: "7992739871"
+    print(f"Length:{len(credit_card_number)} \nOriginal List: {credit_card_number}")    
     
-    Returns:
-        bool: True if number is valid, False otherwise.
-    
-    Examples:
-        >>> validate_number("79927398713")
-        True
+    for index,number in enumerate(credit_card_number, start=1):
+        if index % 2 == 0:
+            number *= 2
         
-        Step-by-step example using "7992739871":
-        1. Starting from right: 7992739871
-        2. Double every second digit from right:
-           Original:  7 9 9 2 7 3 9 8 7 1
-           Doubled:   7 18 9 4 7 6 9 16 7 2
-        3. Sum digits of numbers > 9:
-           After sum: 7 9 9 4 7 6 9 7 7 2
-        4. Add all digits: 7+9+9+4+7+6+9+7+7+2 = 67
-        5. Check if sum (67) is divisible by 10 (it's not, so number is invalid)
-    
-    Note:
-        - Input should be a string of digits
-        - Spaces and non-numeric characters should be removed before passing to function
-        - Returns False for empty string or invalid input
-    """
-    pass
+        if number > 9:
+            number -= 9
 
-clean_credit_card("123123-1231432 13123- ____1123123",{"_"})
+        credit_card_number[index-1] = number
+        
+    print(f"Length:{len(credit_card_number)} \nList After Multiplying: {credit_card_number}")   
+    
+    sum_of_ccn = sum(credit_card_number)
+    
+    print(f"Sum of All Numbers in the list: {sum_of_ccn}") 
+    
+    if sum_of_ccn % 10 == 0:
+        print("Fr Fr Your Credit Card Valid becuz Luhn's Algorithm said so.")
+    else:
+        print("Nice try diddy.")
+    
+def main():
+    ccn = get_credit_card_number()        
+
+    cleaned_ccn = clean_credit_card(ccn)
+
+    Luhns_Algorithm(cleaned_ccn)
+
+if __name__ == "__main__":
+    main()
