@@ -1,5 +1,6 @@
 from os import system
 from time import sleep
+import json
 
 def frfr(time_in_seconds_for_sleep):
     sleep(time_in_seconds_for_sleep)
@@ -8,6 +9,12 @@ def frfr(time_in_seconds_for_sleep):
 def frfrrrr(input_text="Press anything to go to the main screen: "):
     input(input_text)
     system("cls")
+
+def read_data_from_json(balance):
+    with open("Projects Resources/balance.json","r") as r:
+        data = json.load(r)
+    balance = data["balance"]
+    return balance
    
 def get_balance(balance):
     print(f"Your Balance: Rs. {balance:.2f}")
@@ -30,7 +37,7 @@ def deposit_moneh(balance):
     
     while True:    
         agree = input("Are you sure? (y/n): ").lower().strip()
-        if agree == "y":
+        if agree == "y" or agree == "":
             return temp_balance
         elif agree == "n":
             return balance
@@ -59,8 +66,16 @@ def withdraw_money(balance):
     get_balance(balance)
     return balance
     
+def save_data_to_json(balance):
+    with open("Projects Resources/balance.json", "w") as w:
+        json.dump(balance,w,indent=4)
+        
+    
 def main():
-    balance = 0
+    data = {
+        "balance":0
+    }
+    data["balance"] = read_data_from_json(data["balance"])
     while True:
         try:
             print(f"<{'='*10}>")
@@ -80,17 +95,18 @@ def main():
             continue
     
         if user_input == 1:
-            get_balance(balance)
+            get_balance(data["balance"])
             frfrrrr()
         elif user_input == 2:
-            balance = deposit_moneh(balance)
+            data["balance"] = deposit_moneh(data["balance"])
             frfrrrr()
         elif user_input == 3:
-            balance = withdraw_money(balance)
+            data["balance"] = withdraw_money(data["balance"])
             frfrrrr()
         else:
-            get_balance(balance)
-            input("Press Enter to exit.")
+            get_balance(data["balance"])
+            save_data_to_json(data)
+            input("Data Saved Successfully,\nPress Enter to exit.")
             exit()
 
 if __name__ == "__main__":
