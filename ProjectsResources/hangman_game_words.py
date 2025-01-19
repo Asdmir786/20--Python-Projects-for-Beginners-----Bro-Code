@@ -1,4 +1,4 @@
-words = frozenset({
+words = (
     "photosynthesis", "gravity", "eclipse", "molecule", "calculus",
     "prophet", "hadith", "qibla", "hijra", "zakat",
     "continent", "equator", "latitude", "volcano", "savanna",
@@ -79,4 +79,4 @@ words = frozenset({
     "photosphere", "chromosphere", "corona", "sunspot", "solar",
     "eclipse", "aurora", "nebulae", "milky", "way",
     "astrolabe", "cartesian", "alchemy", "barometer", "calorimeter"
-})
+)
