@@ -92,3 +92,5 @@ def display_hint(word):
     hint = "_ "*len(word)
     print(hint)
 
+def main():
+    main_word = get_word()
