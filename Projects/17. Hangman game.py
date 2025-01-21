@@ -121,14 +121,17 @@ def main():
             print(i,end=" ")
         print()
         print(f"Aphabets guessed: {alphabets_guessed}")
+        print(f"Wrong Guesses: {wrong_guesses}/{len(hangman_states)}")
         word_input = ask_userWord(alphabets_guessed)
 
         for i in range(len(main_word)):
             if word_input == main_word[i]:
-                print(f"{word_input} is indeed in the {main_word}") 
                 hint[i] = word_input 
                 frfr = True
+        print(f"{word_input} is indeed in the Word.") 
+
         alphabets_guessed.add(word_input) 
+
         if once == True:
             pass
         else:
