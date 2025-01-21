@@ -4,6 +4,9 @@ from ProjectsResources import hangman_game_words as h
 import random
 import os
 import time
+import string
+
+lowercase_letters = list(string.ascii_lowercase)
 
 hangman_states = [
     """
@@ -88,12 +91,16 @@ def clear_screen(userInput_or_timeInput="",seconds=0,prompt="Press enter or anyt
         time.sleep(seconds)
         os.system("cls")
 
-def ask_userWord():
+def ask_userWord(words_already_done):
     while True:
         print(f"<{"="*40}>\n")
         user_input = input("Guess the word: ").lower().strip()
         if len(user_input) > 1:
             print("Write 1 word at a time.")
+        elif user_input in words_already_done:
+            print("Enter an alphabet which you have not written.")
+        elif user_input not in lowercase_letters:
+            print("Enter an Alphabet Bruv.")
         else:
             return user_input
 
@@ -103,6 +110,8 @@ def main():
     hint.extend(["_"] * len(main_word))
     wrong_guesses = 0
     total_guesses = 0
+    alphabets_guessed = {''}
+    once = False
     
     
     while wrong_guesses != len(hangman_states) and "_" in hint:
@@ -111,6 +120,7 @@ def main():
         for i in hint:
             print(i,end=" ")
         print()
+        print(f"Aphabets guessed: {alphabets_guessed}")
         word_input = ask_userWord()
 
         for i in range(len(main_word)):
@@ -118,7 +128,13 @@ def main():
                 print(f"{word_input} is indeed in the {main_word}") 
                 hint[i] = word_input 
                 frfr = True
-                
+        alphabets_guessed.add(word_input) 
+        if once == True:
+            pass
+        else:
+            alphabets_guessed.remove('') 
+        once = True
+        
         if frfr == False:
             print("Nope")
             wrong_guesses += 1
