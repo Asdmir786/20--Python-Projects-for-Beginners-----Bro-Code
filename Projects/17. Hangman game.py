@@ -121,7 +121,7 @@ def main():
             print(i,end=" ")
         print()
         print(f"Aphabets guessed: {alphabets_guessed}")
-        word_input = ask_userWord()
+        word_input = ask_userWord(alphabets_guessed)
 
         for i in range(len(main_word)):
             if word_input == main_word[i]:
