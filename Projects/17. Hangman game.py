@@ -112,6 +112,7 @@ def main():
     total_guesses = 0
     alphabets_guessed = {''}
     once = False
+    one_hint_available = True
     
     
     while wrong_guesses != len(hangman_states) and "_" in hint:
@@ -122,6 +123,12 @@ def main():
         print()
         print(f"Aphabets guessed: {alphabets_guessed}")
         print(f"Wrong Guesses: {wrong_guesses}/{len(hangman_states)}")
+
+        while True:
+            user_input = input("Do you want to get a hint or unlock an alphabet (h/a/n): ")
+            if user_input == "h":
+                pass
+        
         word_input = ask_userWord(alphabets_guessed)
 
         for i in range(len(main_word)):
