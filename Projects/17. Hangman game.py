@@ -124,28 +124,59 @@ def main():
         print(f"Aphabets guessed: {alphabets_guessed}")
         print(f"Wrong Guesses: {wrong_guesses}/{len(hangman_states)}")
 
-        while True:
-            user_input = input("Do you want to get a hint or unlock an alphabet (h/a/n): ")
-            if user_input == "h":
-                pass
+        if one_hint_available == True:
+            while True:
+                user_input = input("Do you want to get a hint or unlock an alphabet (h/a/n): ")
+                if user_input == "h":
+                    print(f"The hint is: {h.hangman_words_with_hints[f"{main_word}"]}")
+                    break
+                elif user_input == "a":
+                    list_real_words = list(main_word)
+                    random_alphabet = random.choice(list_real_words)
+                    for k in range(len(main_word)):
+                        if random_alphabet == main_word[k]:
+                            hint[k] = random_alphabet
+                            alphabets_guessed.add(random_alphabet)
+                    break
+                elif user_input == "n":
+                    break
+                else:
+                    print("Enter one of these: h a or n")
+                    clear_screen("ti",1)
         
+        if one_hint_available == True:
+            alphabets_guessed.remove('')
+            display_state(wrong_guesses)    
+            for i in hint:
+                print(i,end=" ")
+            print() 
+            one_hint_available = False
+            print(f"Aphabets guessed: {alphabets_guessed}")
+            print(f"Wrong Guesses: {wrong_guesses}/{len(hangman_states)}")
         word_input = ask_userWord(alphabets_guessed)
 
         for i in range(len(main_word)):
             if word_input == main_word[i]:
                 hint[i] = word_input 
                 frfr = True
-        print(f"{word_input} is indeed in the Word.") 
+            
+        
 
         alphabets_guessed.add(word_input) 
 
         if once == True:
             pass
         else:
-            alphabets_guessed.remove('') 
+            try:
+                alphabets_guessed.remove('') 
+            except KeyError:
+                pass
         once = True
         
-        if frfr == False:
+        if frfr == True:
+            print(f"{word_input} is indeed in the Word.") 
+
+        elif frfr == False:
             print("Nope")
             wrong_guesses += 1
         total_guesses += 1
@@ -153,7 +184,7 @@ def main():
         clear_screen("ti",1)
         
     if wrong_guesses == len(hangman_states):
-        print("Too many guesses")
+        print(f"Too many guesses.\nThe word was: {main_word}")
     else:
         print("Yay you win. fr fr")
     
@@ -161,4 +192,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-    
