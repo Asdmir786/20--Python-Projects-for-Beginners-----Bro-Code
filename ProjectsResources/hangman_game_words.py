@@ -1,4 +1,4 @@
-hangman_words = [
+words = [
     'travel', 'surgery', 'nightmare', 'elephant', 'physics', 'echo', 'sunset', 
     'whisper', 'telescope', 'scarf', 'football', 'chocolate', 'orange', 'gadget', 
     'tourism', 'Allah', 'therapy', 'vacation', 'comet', 'trip', 'Mecca', 'mountain', 
