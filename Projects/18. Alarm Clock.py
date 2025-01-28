@@ -27,16 +27,27 @@ def get_date():
             
             else: 
                 print("Valid Input Phinnaly!")
-                return days,hours,minutes,seconds
+                user_date = d.datetime.now().replace(day=days,hour=hours,minute=minutes,second=seconds,microsecond=0).strftime("%d %H:%M:%S")
+                return user_date
 
         except ValueError:
                 print("Man, I said to enter a number not bs.")
 
-def set_alarm(ddhhmmss):
-    
-    pass
+def set_alarm(user_date=""):
+    parts = user_date.split(":")
+    dayss,hourss,minutess,secondss = map(int,parts)
+    time_to_blyat = d.datetime.now() + d.timedelta(days=dayss,hours=hourss,minutes=minutess,seconds=secondss)
+    time_to_blyat = time_to_blyat.strftime("%d %H:%M:%S")
+    while True:
+        if current_time != time_to_blyat:
+            current_time = d.datetime.now().strftime("%H:%M:%S")
+            print(current_time)
+            print(type(current_time))
+            time.sleep(1)
+        else:
+            return "WIP"
 
-get_date()
+set_alarm("0 0:0:10")
 
 # while True:
 #     current_time = d.datetime.now().strftime("%H:%M:%S")
