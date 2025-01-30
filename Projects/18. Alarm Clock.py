@@ -46,21 +46,23 @@ def get_audio():
             for i,audio in enumerate(audios):
                 print(f"{i}. {audio}")
                 numbers.append(i)
-            user_audio = input(f"Enter the audio number to choose when the alarm will start to BLYAAT(0 to {len(numbers)-1} enter 'random' for any sound.): ").strip()
+            user_audio = input(f"Enter the audio number to choose when the alarm will start to BLYAAT(0 to {len(numbers)-1} enter 'r' for any sound.): ").strip()
 
             if int(user_audio) >= 0 or int(user_audio) <= len(numbers)-1:
                 return int(user_audio)
             else: 
                 print(f"Enter a number greater than zero and NOT greater than {len(numbers)-1}.")
         except ValueError:
-            if user_audio.lower() == "random":
+            if user_audio.lower() == "r":
                 return user_audio
-            print("Enter a Number or the word 'random' please.")
+            print("Enter a Number or the alphabet 'r' please.")
 
 def set_alarm(user_date="", audio_number=""):
     parts = user_date.split(":")
     hourss,minutess,secondss = map(int,parts)
-    time_to_blyat = d.time(hourss,minutess,secondss)
+    time_to_blyat = d.datetime.strptime(f"{hourss}:{minutess}:{secondss}","%H:%M:%S")
+    once = True
+    
     if audio_number.isdigit() == True:
         audio_number = int(audio_number)
     else:
@@ -68,8 +70,16 @@ def set_alarm(user_date="", audio_number=""):
 
     while True:
         current_time = d.datetime.now().strftime("%H:%M:%S")
+        current_time = d.datetime.strptime(current_time, "%H:%M:%S")
 
-        if current_time == str(time_to_blyat):
+        if once == True:
+            wait_time = current_time - time_to_blyat
+            if wait_time.total_seconds() < 0:
+                wait_time = d.timedelta(days=1)
+            print(f"Waiting time is: {wait_time}")
+            once = False
+
+        if current_time == time_to_blyat:
             mixer.init()
             mixer.music.load(f"{audios[audio_number]}")
             mixer.music.play(-1)
@@ -81,7 +91,7 @@ def set_alarm(user_date="", audio_number=""):
             time.sleep(0.7)
             break
         else:
-            print(current_time)
+            print(current_time.strftime("%H:%M:%S"))
             print(type(current_time))
             time.sleep(1)
 
