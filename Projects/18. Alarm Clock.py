@@ -118,3 +118,32 @@ if __name__ == "__main__":
             
             
         
+# Optional Tasks:
+
+# TODO: Snooze Feature
+# 1. When alarm triggers, detect 's' keypress to snooze instead of stopping.
+# 2. Add snooze_duration (e.g., 5 minutes) to current alarm time.
+# 3. Reset the alarm loop with the new time.
+# 4. Limit max snooze attempts (e.g., 3 times).
+
+# TODO: Volume Control
+# 1. Add a volume input prompt (0.0 to 1.0).
+# 2. Use mixer.music.set_volume(volume) before playing.
+# 3. Validate input to ensure it's between 0 and 1.
+
+# TODO: Auto-Stop After Duration
+# 1. Add a prompt for alarm duration (minutes).
+# 2. Start a timer when the alarm begins playing.
+# 3. Stop mixer.music after the duration elapses.
+# 4. Handle early user interruption (Enter key) as before.
+
+# TODO: Custom Messages
+# 1. Add input prompt for a message (e.g., "Meeting at 10 AM!").
+# 2. Store the message in a variable.
+# 3. Print the message when the alarm triggers.
+
+# TODO: Progress Visualization
+# 1. Calculate time remaining until alarm.
+# 2. Display dynamic countdown (HH:MM:SS) in the terminal.
+# 3. Overwrite the previous line each second for a clean look.
+# 4. Stop countdown when alarm triggers or user exits.
