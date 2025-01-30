@@ -89,13 +89,32 @@ def set_alarm(user_date="", audio_number=""):
             mixer.music.stop()
             print("The Alarm has been stopped. ")
             time.sleep(0.7)
-            break
+            return True
         else:
             print(current_time.strftime("%H:%M:%S"))
             print(type(current_time))
             time.sleep(1)
 
-if __name__ == "__main__":
+def main():
     user_date = get_date()
     user_audio_choice = get_audio()
     set_alarm(user_date,user_audio_choice)
+
+if __name__ == "__main__":
+    main()
+
+    while True:
+        user_choice = input("Do you want to set another alarm? (y/n): ").lower().strip()
+        if user_choice == 'y':
+            os.system("cls")
+            main()
+        elif user_choice == 'n':
+            os.system("cls")
+            print("Dare I say, but frfr.")
+            time.sleep(1)
+            exit()
+        else:
+            print("Enter \"y\" or \"n\" or BOOOOOOOOOOOOOOOOOM!, I will delete that System32 folder if you try me again.")
+            
+            
+        
