@@ -3,7 +3,7 @@ import datetime as d
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'  # Must be set BEFORE importing pygame
 from pygame import mixer
-from keyboard import wait
+import keyboard
 import pathlib
 import random
 
@@ -84,12 +84,27 @@ def set_alarm(user_date="", audio_number=""):
             mixer.music.load(f"{audios[audio_number]}")
             mixer.music.play(-1)
 
-            print("Press Enter to stop the alarm.")
-            wait("enter")
-            mixer.music.stop()
-            print("The Alarm has been stopped. ")
-            time.sleep(0.7)
-            return True
+            while True:
+                print("Press Enter to stop the alarm or press 's' to snooze for 10 minutes.")
+                if keyboard.is_pressed("s"):
+                    mixer.music.stop()
+                    print("The Alarm has been snoozed for 10 minutes. ")
+                    time.sleep(0.7) 
+                    break
+                elif keyboard.is_pressed("enter"):
+                    mixer.music.stop()
+                    print("The Alarm has been stopped.")
+                    time.sleep(0.7) 
+                    return True 
+                else:
+                    pass
+            
+            while True:
+                # WIP
+                print(current_time.strftime("%H:%M:%S"))
+                print(type(current_time))
+                time.sleep(1)
+                
         else:
             print(current_time.strftime("%H:%M:%S"))
             print(type(current_time))
