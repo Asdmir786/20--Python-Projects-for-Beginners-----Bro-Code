@@ -22,6 +22,6 @@
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
- -  Project Number: 18
+ -  Project Number: 19
  -  Project: digital clock 🕒 [INTERMEDIATE]
  -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=11345s
