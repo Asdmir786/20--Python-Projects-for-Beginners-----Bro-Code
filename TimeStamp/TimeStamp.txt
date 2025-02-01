@@ -16,12 +16,12 @@
 15. (01:41:51) banking program 💰 [EASY]                           [DONE]
 16. (01:56:52) slot machine 🎰 [EASY]                              [SKIPPED]
 17. (02:17:03) hangman game 🕺 [INTERMEDIATE]                       [DONE]
-18. (02:42:09) alarm clock ⏰ [EASY]
+18. (02:42:09) alarm clock ⏰ [EASY]                               [DONE]
 19. (02:52:41) digital clock 🕒 [INTERMEDIATE]
 20. (03:09:06) stopwatch ⏱ [INTERMEDIATE]
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
  -  Project Number: 18
- -  Project: alarm clock ⏰ [EASY]
- -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=10361s
+ -  Project: digital clock 🕒 [INTERMEDIATE]
+ -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=11345s
