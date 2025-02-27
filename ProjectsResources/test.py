@@ -124,10 +124,50 @@ else:
         time_of_day = "daytime"
 
 # Print the collected information
-print(f"Temperature: {temperature} °C")
-print(f"Feels like: {feels_like} °C")
-print(f"Description: {description}")
-print(f"Weather code: {weather_code}")
-print(f"Current local time: {current_time_local.strftime('%Y-%m-%d %H:%M:%S')}")
-print(f"It's currently: {time_of_day}")
-print(f"Weather icon URL: {icon_url}")
+# print(f"Temperature: {temperature} °C")
+# print(f"Feels like: {feels_like} °C")
+# print(f"Description: {description}")
+# print(f"Weather code: {weather_code}")
+# print(f"Current local time: {current_time_local.strftime('%Y-%m-%d %H:%M:%S')}")
+# print(f"It's currently: {time_of_day}")
+# print(f"Weather icon URL: {icon_url}")
+print(data["cod"])
+
+# import sys
+# from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel
+
+# class MainWindow(QWidget):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("Input Example")
+#         self.resize(300, 100)
+
+#         # Create an input bar (QLineEdit)
+#         self.input_line = QLineEdit(self)
+#         self.input_line.setPlaceholderText("Type something...")
+
+#         # Create a button to capture the input text
+#         self.button = QPushButton("Submit", self)
+#         self.button.clicked.connect(self.handle_input)
+
+#         # Create a label to display the stored text
+#         self.label = QLabel("", self)
+
+#         # Set up a vertical layout and add widgets
+#         layout = QVBoxLayout(self)
+#         layout.addWidget(self.input_line)
+#         layout.addWidget(self.button)
+#         layout.addWidget(self.label)
+#         self.setLayout(layout)
+
+#     def handle_input(self):
+#         # Retrieve the text from the input bar
+#         user_text = self.input_line.text()
+#         # Store and use the text as needed
+#         self.label.setText("You entered: " + user_text)
+#         print("Stored text:", user_text)
+
+# app = QApplication(sys.argv)
+# window = MainWindow()
+# window.show()
+# sys.exit(app.exec())
