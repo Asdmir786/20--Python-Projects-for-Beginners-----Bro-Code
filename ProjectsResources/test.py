@@ -78,139 +78,56 @@ import time
 # sys.exit(app.exec())
 
 import requests
+import datetime
 
-def geocode_city(city_name):
-    """
-    Look up a city using the Open-Meteo Geocoding API.
+# Replace with your actual API key
+api_key = "384a7841f7fdedeb6bbff308c6d50713"
+city = "Lahore"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
-    Args:
-        city_name (str): The name of the city to look up.
+# Send the request
+response = requests.get(url)
+data = response.json()
 
-    Returns:
-        tuple: A tuple (latitude, longitude, resolved_city_name). 
-               Returns (None, None, None) if the city is not found.
-    """
-    # API endpoint for city geocoding
-    url = "https://geocoding-api.open-meteo.com/v1/search"
-    # Parameters for the API call: the city name and count=1 to get the first match
-    params = {"name": city_name, "count": 1}
-    response = requests.get(url, params=params)
-    
-    if response.status_code == 200:
-        data = response.json()
-        results = data.get("results")
-        if results:
-            # Use the first result from the returned list
-            result = results[0]
-            return result["latitude"], result["longitude"], result["name"]
-    # If the API call fails or no city is found, return None values
-    return None, None, None
+# Extract relevant details
+temperature = data["main"]["temp"]
+feels_like = data["main"]["feels_like"]
+description = data["weather"][0]["description"]
+weather_code = data["weather"][0]["id"]
 
-def map_weather_code(code):
-    """
-    Convert a numeric weather code into a text description and emoji.
+# Instead of mapping weather code to an emoji, use the provided icon code
+icon_code = data["weather"][0]["icon"]  # e.g., "10d" or "01n"
+icon_url = f"http://openweathermap.org/img/wn/{icon_code}@2x.png"
 
-    Args:
-        code (int): The weather code from the API.
+# Create a timezone object using the API's timezone offset (in seconds)
+timezone_offset = data["timezone"]
+tz_local = datetime.timezone(datetime.timedelta(seconds=timezone_offset))
 
-    Returns:
-        tuple: (description, emoji) representing the weather condition.
-    """
-    if code == 0:
-        return "Clear sky", "☀️"
-    elif code in [1, 2, 3]:
-        return "Partly cloudy", "⛅"
-    elif code in [45, 48]:
-        return "Foggy", "🌫️"
-    elif code in [51, 53, 55]:
-        return "Drizzle", "🌦️"
-    elif code in [56, 57]:
-        return "Freezing drizzle", "🌧️"
-    elif code in [61, 63, 65]:
-        return "Rain", "🌧️"
-    elif code in [66, 67]:
-        return "Freezing rain", "🥶"
-    elif code in [71, 73, 75]:
-        return "Snow", "❄️"
-    elif code == 77:
-        return "Snow grains", "❄️"
-    elif code in [80, 81, 82]:
-        return "Rain showers", "🌦️"
-    elif code in [85, 86]:
-        return "Snow showers", "🌨️"
-    elif code in [95, 96, 99]:
-        return "Thunderstorm", "⛈️"
+# Convert Unix timestamps to local time using datetime.fromtimestamp() with tz parameter
+current_time_local = datetime.datetime.fromtimestamp(data["dt"], tz=tz_local)
+# The sunrise and sunset values are used to help determine if it's day or night
+sunrise = data["sys"]["sunrise"]
+sunset = data["sys"]["sunset"]
+
+# Determine the time of day
+if data["dt"] < sunrise or data["dt"] > sunset:
+    time_of_day = "night"
+else:
+    hour = current_time_local.hour
+    if 6 <= hour < 12:
+        time_of_day = "morning"
+    elif 12 <= hour < 18:
+        time_of_day = "afternoon"
+    elif 18 <= hour < 21:
+        time_of_day = "evening"
     else:
-        return "Unknown", "❓"
+        time_of_day = "daytime"
 
-def get_weather(latitude, longitude):
-    """
-    Retrieve current weather and hourly apparent temperature data using the Open-Meteo API.
-
-    Args:
-        latitude (float): The latitude of the location.
-        longitude (float): The longitude of the location.
-
-    Returns:
-        dict: A dictionary containing the weather data if successful; otherwise, None.
-    """
-    # API endpoint for weather forecast
-    url = "https://api.open-meteo.com/v1/forecast"
-    # Set up parameters for current weather and hourly apparent temperature data
-    params = {
-        "latitude": latitude,
-        "longitude": longitude,
-        "current_weather": "true",  # Request current weather info (temperature, wind speed, etc.)
-        "hourly": "apparent_temperature",  # Request hourly "feels like" temperature
-        "timezone": "auto"  # Automatically adjust to the local timezone
-    }
-    response = requests.get(url, params=params)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        print("Error fetching weather data:", response.status_code)
-        return None
-
-if __name__ == "__main__":
-    # Ask the user to enter a city name
-    city = input("Enter a city name: ")
-    # Get the location details (latitude, longitude, and city name)
-    lat, lon, resolved_name = geocode_city(city)
-    
-    if lat is None:
-        print("City not found. Please try a different city name.")
-    else:
-        print(f"Location: {resolved_name} (lat: {lat}, lon: {lon})")
-        # Fetch weather data for the specified location
-        data = get_weather(lat, lon)
-        if data:
-            # Extract current weather information and hourly data from the API response
-            current = data.get("current_weather", {})
-            hourly = data.get("hourly", {})
-            current_time = current.get("time")  # Current time in ISO 8601 format
-            temperature = current.get("temperature")
-            weather_code = current.get("weathercode")
-            
-            # Find the "apparent_temperature" for the current time
-            apparent_temp = None
-            times = hourly.get("time", [])
-            apparent_values = hourly.get("apparent_temperature", [])
-            if current_time and times and apparent_values:
-                try:
-                    # Look for the current time in the list of hourly times
-                    idx = times.index(current_time)
-                    apparent_temp = apparent_values[idx]
-                except ValueError:
-                    # If current time is not found, leave apparent_temp as None
-                    pass
-
-            # Convert the numeric weather code to a description and emoji
-            description, emoji = map_weather_code(weather_code)
-            
-            # Display the weather information to the user
-            print(f"Current Temperature: {temperature}°C")
-            if apparent_temp is not None:
-                print(f"Feels Like: {apparent_temp}°C")
-            print(f"Condition: {description} (Code: {str(weather_code).zfill(3)}) {emoji}")
-        else:
-            print("Failed to retrieve weather data.")
+# Print the collected information
+print(f"Temperature: {temperature} °C")
+print(f"Feels like: {feels_like} °C")
+print(f"Description: {description}")
+print(f"Weather code: {weather_code}")
+print(f"Current local time: {current_time_local.strftime('%Y-%m-%d %H:%M:%S')}")
+print(f"It's currently: {time_of_day}")
+print(f"Weather icon URL: {icon_url}")
