@@ -23,7 +23,7 @@ class MainWindow(QWidget):
         self.submit_button = QPushButton("Submit")
         self.submit_button.setFixedWidth(100)
         self.submit_button.setStyleSheet("padding: 10px;")
-        self.submit_button.clicked.connect(self.check_for_input_text)
+        self.submit_button.clicked.connect(self.get_info_and_set)
         
         self.city_country = QLabel("") # e.g. Lahore, PK
         self.city_country.setStyleSheet("font-size: 40px; margin: 0;")
@@ -104,20 +104,30 @@ class MainWindow(QWidget):
            
     def change_date_on_click(self):
         Dtime = self.time.text()
-        Dtime = datetime.datetime.strptime(Dtime, "%d/%m/%Y %I:%M:%S %p")
-        Dtime = datetime.datetime.strftime(Dtime, "%d/%m/%Y %H:%M:%S")
-        print(f"{Dtime}, {type(Dtime)}\n{self.data}")
+        try:
+            Dtime = datetime.datetime.strptime(Dtime, "%d/%m/%Y %I:%M:%S %p")
+            Dtime = datetime.datetime.strftime(Dtime, "%d/%m/%Y %H:%M:%S")
+        except ValueError:
+            Dtime = datetime.datetime.strptime(Dtime, "%d/%m/%Y %H:%M:%S")
+            Dtime = datetime.datetime.strftime(Dtime, "%d/%m/%Y %I:%M:%S %p")
+            
+        self.time.setText(Dtime)
+        # print(f"{Dtime}, {type(Dtime)}\n{self.data}")
             
     def get_info_and_set(self):
-        if not(self.city_input.text().capitalize().strip()):
-            self.submit_button.setText("Enter a city ching bong.")
-            time.sleep(2)
-            self.submit_button.setText("Submit")
+        if len(self.city_input.text().strip()) != 0:
+            pass
+        else:
+            self.submit_button.setText("Enter a city.")
+            QTimer.singleShot(2000, lambda: self.submit_button.setText("Submit"))
+            return
 
         city = self.city_input.text().capitalize().strip()
 
         api_key = "384a7841f7fdedeb6bbff308c6d50713"
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+        # Append a timestamp to bypass caching
+        timestamp = int(time.time())
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&timestamp={timestamp}"
         response = requests.get(url)
         self.data = response.json()
         
@@ -184,12 +194,12 @@ class MainWindow(QWidget):
         else:
             self.status_code_display(self.data["cod"])
 
-    def check_for_input_text(self):
-        if len(self.city_input.text().strip()) != 0:
-            self.get_info_and_set()
-        else:
-            self.submit_button.setText("Enter a city.")
-            QTimer.singleShot(2000, lambda: self.submit_button.setText("Submit"))
+    # def check_for_input_text(self):
+    #     if len(self.city_input.text().strip()) != 0:
+    #         self.get_info_and_set()
+    #     else:
+    #         self.submit_button.setText("Enter a city.")
+    #         QTimer.singleShot(2000, lambda: self.submit_button.setText("Submit"))
     
     def do_nothing(self):
         pass
