@@ -12,48 +12,140 @@ class MainWindow(QWidget):
         self.showNormal()
         self.setWindowTitle("Weather App")
         
+        # Add overall window styling
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #2D3250;
+                color: white;
+                font-family: 'Segoe UI', Arial, sans-serif;
+            }
+        """)
+        
         self.city_input = QLineEdit()
         self.city_input.setPlaceholderText("Enter City")
         self.city_input.setFixedWidth(200)
-        self.city_input.setStyleSheet(
-            "QLineEdit { margin: 0; padding: 10px; font-size: 15px; font-family: Arial; }"
-        )
+        self.city_input.setStyleSheet("""
+            QLineEdit {
+                background-color: #424769;
+                border: 2px solid #676F9D;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 15px;
+                color: white;
+            }
+            QLineEdit:focus {
+                border: 2px solid #7C93C3;
+            }
+        """)
         self.city_input.returnPressed.connect(self.get_info_and_set)
         
         self.submit_button = QPushButton("Submit")
         self.submit_button.setFixedWidth(100)
-        self.submit_button.setStyleSheet("padding: 10px;")
+        self.submit_button.setStyleSheet("""
+            QPushButton {
+                background-color: #F6B17A;
+                color: #2D3250;
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            QPushButton:hover {
+                background-color: #FF9F45;
+            }
+            QPushButton:pressed {
+                background-color: #E7873C;
+            }
+        """)
         self.submit_button.clicked.connect(self.get_info_and_set)
         
         self.city_country = QLabel("") # e.g. Lahore, PK
-        self.city_country.setStyleSheet("font-size: 40px; margin: 0;")
+        self.city_country.setStyleSheet("""
+            QLabel {
+                color: white;
+                font-size: 36px;
+                font-weight: bold;
+                margin: 10px;
+            }
+        """)
         
         self.temp = QPushButton("")  # e.g 72°F
-        self.temp.setStyleSheet("border: none; font-size: 40px; margin-top: 40px;")
+        self.temp.setStyleSheet("""
+            QPushButton {
+                background-color: transparent;
+                color: #F6B17A;
+                font-size: 48px;
+                font-weight: bold;
+                border: none;
+            }
+            QPushButton:hover {
+                color: #FF9F45;
+            }
+        """)
         self.temp.setFixedWidth(200)
         self.temp.clicked.connect(self.change_temp_on_click)
         
         self.feel_temp = QPushButton("")  # e.g. Feels like 72°F
-        self.feel_temp.setStyleSheet("border: none; margin: 0; ")
-        self.feel_temp.setFixedWidth(100)
+        self.feel_temp.setStyleSheet("""
+            QPushButton {
+                background-color: transparent;
+                color: #7C93C3;
+                font-size: 16px;
+                border: none;
+            }
+        """)
+        self.feel_temp.setFixedWidth(150)
         
         self.description = QLabel("")      # e.g. Rainy
         self.description.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.description.setStyleSheet("font-size: 40px;")
+        self.description.setStyleSheet("""
+            QLabel {
+                color: #F6B17A;
+                font-size: 24px;
+                font-weight: bold;
+                text-transform: capitalize;
+                margin: 10px;
+            }
+        """)
         
         self.time = QPushButton("")  # e.g. 27/02/2025 01:48:44 PM
-        self.time.setStyleSheet("border: None; ")
+        self.time.setStyleSheet("""
+            QPushButton {
+                background-color: transparent;
+                color: #7C93C3;
+                font-size: 16px;
+                border: none;
+            }
+            QPushButton:hover {
+                color: #9FB4D9;
+            }
+        """)
         self.time.clicked.connect(self.change_date_on_click)
         
         self.day_parts = QLabel("")       # e.g. afternoon
         self.day_parts.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.day_parts.setStyleSheet("border: None; ")
+        self.day_parts.setStyleSheet("""
+            QLabel {
+                color: #7C93C3;
+                font-size: 18px;
+                text-transform: capitalize;
+                margin: 5px;
+            }
+        """)
         
         self.label_weather_icon = QLabel()
         self.weather_icon = QPixmap()
         
         self.label_weather_icon.setPixmap(self.weather_icon)
         self.status_code = QLabel()
+        self.status_code.setStyleSheet("""
+            QLabel {
+                color: #F6B17A;
+                font-size: 14px;
+                margin: 10px;
+            }
+        """)
         
         hbox = QHBoxLayout()
         hbox.setSpacing(15)  # No extra spacing between widgets
@@ -64,6 +156,8 @@ class MainWindow(QWidget):
         
         
         vbox = QVBoxLayout()
+        vbox.setContentsMargins(20, 20, 20, 20)
+        vbox.setSpacing(10)
         vbox.addLayout(hbox)
         vbox.addWidget(self.city_country, alignment=Qt.AlignmentFlag.AlignCenter)
         vbox.addWidget(self.temp, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -227,5 +321,3 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec())
-
-
