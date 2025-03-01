@@ -22,6 +22,6 @@
 21. (03:27:04) weather app ☀️ [INTERMEDIATE]
 
 Currently At: 
- -  Project Number: 21 (LAST)
- -  Project: weather app ☀️ [INTERMEDIATE]
+ -  Project Number: Done
+ -  Project: Done
  -  URL: https://www.youtube.com/watch?v=4wGuB3oAKc4&t=12423s
